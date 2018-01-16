@@ -1,4 +1,16 @@
+class SubdomainConstraint
+  def self.matches?(request)
+    invalid_subdomains = %w{ www }
+    request.subdomain.present && invalid_subdomains.include?(request.subdomain)
+  end
+end
+
 Rails.application.routes.draw do
+
+  # Tenant specific routes
+  constraints SubdomainConstraint do
+
+  end
 
   # Public site
   root to: 'home#index'

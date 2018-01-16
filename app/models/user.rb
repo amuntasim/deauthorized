@@ -6,9 +6,16 @@ class User < ApplicationRecord
 
   # Include default devise modules.
   devise :database_authenticatable, :registerable,
-          :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable
+
+  validates :subdomain, presence: true, uniqueness: true, exclusion: { in: %w(www)}
+
+  after_create :create_tenant
 
   private
 
+  def create_tenant
+    Apartment::Tenant.create(subdomain)
+  end
 
 end

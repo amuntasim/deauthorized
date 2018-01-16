@@ -25,6 +25,7 @@ gem 'dotenv'
 gem 'webpacker', '~> 3.0'
 gem 'stripe'
 gem 'carrierwave', '~> 1.0'
+gem 'apartment'
 
 # API configurations
 gem 'rack-cors'
@@ -50,6 +51,9 @@ group :development, :test do
   gem 'faker'
   gem 'pry'
   gem 'awesome_print'
+  gem 'rspec-rails', '~> 3.7'
+  gem 'shoulda-matchers'
+  gem 'factory_bot_rails'
 end
 
 group :development do
